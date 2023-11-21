@@ -16,7 +16,7 @@ const Browse = () => {
     const [loading, setLoading] = useState(true)
 
     const fetchData = async (p) => {
-      const response = await fetch(`http://localhost:8080/api/movies/filter?page=${p}&${pageSize}&${searchParams.toString()}`)
+      const response = await fetch(`http://localhost:8080/api/movies?page=${p}&${pageSize}&${searchParams.toString()}`)
       const data = await response.json()
       if (p === 0) {
         setMovies(data)

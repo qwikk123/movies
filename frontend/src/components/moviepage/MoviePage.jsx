@@ -9,7 +9,7 @@ const MoviePage = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/movies/id/"+id)
+        fetch("http://localhost:8080/api/movies/"+id)
         .then(response => response.json())
         .then(data => {
           console.log(data)

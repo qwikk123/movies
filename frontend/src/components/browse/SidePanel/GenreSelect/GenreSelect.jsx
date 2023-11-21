@@ -28,7 +28,7 @@ export default function GenreSelect({ handleFilterChange, genre, updateGenre }) 
     .then(data => {
       console.log(data)
       setGenres(data)
-      setGenreName([])
+      updateGenre([])
     })
   }, [] )
 
