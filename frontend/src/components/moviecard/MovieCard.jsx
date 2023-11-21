@@ -25,8 +25,8 @@ const MovieCard = ({movie, height = 180}) => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginTop: "-40px",
-                  marginLeft: "-10px"
+                  marginTop: "-35px",
+                  marginLeft: "-5px"
                 }}
               >
                 <CircularProgress 
@@ -55,16 +55,14 @@ const MovieCard = ({movie, height = 180}) => {
               <Box
                 sx={{
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
                   flexDirection: "column",
-                  paddingTop: "5px",
+                  paddingTop: "10px",
                 }}
               >
-                <Typography variant="body2">
+                <Typography variant="body2" sx={{textAlign: "left"}}>
                     {movie.seriesTitle}
                 </Typography>
-                <Typography variant="body2">
+                <Typography variant="body2" sx={{textAlign: "left", marginTop: "5px"}}>
                     {movie.releasedYear}
                 </Typography>
               </Box>
