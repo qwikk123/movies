@@ -3,13 +3,14 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import GenreSelect from './GenreSelect/GenreSelect';
+import GenreSelect from './ItemSelect/GenreSelect';
+import ActorSelect from './ItemSelect/ActorSelect';
+import TextField from '@mui/material/TextField';
 
 const drawerWidth = 300;
 
-export default function SidePanel({ handleFilterChange, genre, updateGenre}) {
+export default function SidePanel({ handleFilterChange, genre, updateGenre, actors, updateActors}) {
   return (
       <Drawer
         sx={{
@@ -23,18 +24,22 @@ export default function SidePanel({ handleFilterChange, genre, updateGenre}) {
         variant="permanent"
         anchor="left"
       >
-        <List style={{marginTop: "48px"}}>
-        <ListItem key={"TODO"} disablePadding>
-              <ListItemButton>
-                <ListItemText primary={"TODO"} />
-              </ListItemButton>
-            </ListItem>
+        <List style={{marginTop: "55px"}}>
+          <ListItem key={"TODO"} disablePadding>
+              <ListItemText primary={"Search for movies"} sx={{textAlign: "center"}} />
+          </ListItem>
         </List>
-        <Divider />
         <List>
-          <ListItem key="genre" disablePadding>
+          <ListItem key="title" disablePadding style={{paddingBottom: 10}}>
+            <TextField sx={{width: 500}} label="Title"></TextField>
+          </ListItem>
+          <ListItem key="genre" disablePadding style={{paddingBottom: 10}}>
             <GenreSelect handleFilterChange={(key,value) => handleFilterChange(key, value)} 
             genre={genre} updateGenre={value => updateGenre(value)}/>
+          </ListItem>
+          <ListItem key="actor" disablePadding>
+            <ActorSelect handleFilterChange={(key,value) => handleFilterChange(key, value)} 
+            actors={actors} updateActors={value => updateActors(value)}/>
           </ListItem>
         </List>
       </Drawer>

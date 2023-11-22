@@ -64,14 +64,17 @@ class MovieRepoCustomImpl : MovieRepoCustom {
 
         val subQuery = query.subquery(Movie::class.java)
         val subRoot = subQuery.from(Movie::class.java)
-        val subGenreJoin = subRoot.join<Movie, T>(joinedWith)
+        val subJoin = subRoot.join<Movie, T>(joinedWith)
 
-        val genrePredicate: Predicate = subGenreJoin.get<String>(onAttribute).`in`(list)
+        val predicate: Predicate = subJoin.get<String>(onAttribute).`in`(list)
+        val subPredicateList: List<Predicate> = list.map {
+            cb.like(cb.lower(subJoin.get(onAttribute)), "%${it.lowercase()}%")
+        }
 
         subQuery.select(subRoot)
-        subQuery.where(genrePredicate)
+        subQuery.where(cb.or(*subPredicateList.toTypedArray()))
         subQuery.groupBy(subRoot)
-        subQuery.having(cb.greaterThanOrEqualTo(cb.count(subGenreJoin), list.size.toLong()))
+        subQuery.having(cb.greaterThanOrEqualTo(cb.count(subJoin), list.size.toLong()))
 
         return root.`in`(subQuery)
     }

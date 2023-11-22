@@ -12,6 +12,7 @@ const Browse = () => {
     const [movies, setMovies] = useState([])
     const [page, setPage] = useState(0)
     const [genre, setGenre] = useState([])
+    const [actors, setActors] = useState([])
     const pageSize = "size=18"
     const [loading, setLoading] = useState(true)
 
@@ -37,6 +38,7 @@ const Browse = () => {
       fetchData(0).finally(setLoading(false))
       if (searchParams.size === 0) {
         setGenre([])
+        setActors([])
       }
     }, [searchParams])
 
@@ -52,10 +54,6 @@ const Browse = () => {
         })
       }
 
-    function updateGenre(value) {
-      setGenre(value)
-    }
-
     if (loading) {
         return <CircularProgress />
     }
@@ -63,7 +61,9 @@ const Browse = () => {
       <div className="center-container" style={{marginTop: "100px", marginLeft: "300px"}}>
         <div className="sidepanel-container">
         <SidePanel handleFilterChange={ (key, value) => handleFilterChange(key, value)}
-        genre={genre} updateGenre={value => updateGenre(value)}/>
+        genre={genre} updateGenre={value => setGenre(value)}
+        actors={actors} updateActors={value => setActors(value)}
+        />
         </div>
         <div className="grid-container">
           <Grid container spacing={{ xs: 1, md: 1 }} columns={{ xs: 4, sm: 12, md: 12 }}>

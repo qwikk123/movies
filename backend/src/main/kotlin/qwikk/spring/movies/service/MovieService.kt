@@ -3,6 +3,7 @@ package qwikk.spring.movies.service
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import qwikk.spring.movies.model.Movie
+import qwikk.spring.movies.repo.ActorRepository
 import qwikk.spring.movies.repo.GenreRepository
 import qwikk.spring.movies.repo.MovieRepository
 
@@ -13,6 +14,8 @@ class MovieService {
     lateinit var movieRepository: MovieRepository
     @Autowired
     lateinit var genreRepository : GenreRepository
+    @Autowired
+    lateinit var actorRepository: ActorRepository
 
     fun findByCustomQuery(title: String?, genre: List<String>?, actor: List<String>?, director: String?,
         sort: String?, page: String, size: String): List<Movie> {
@@ -24,5 +27,6 @@ class MovieService {
     fun findMovieId(id: Long): Movie = movieRepository.findById(id).orElseThrow {
         NoSuchElementException("Movie ID:$id not found!")
     }
-    fun findAllGenres() = genreRepository.findAllGenres()
+    fun findGenres() = genreRepository.findAllGenres()
+    fun findActors() = actorRepository.findAllActors()
 }

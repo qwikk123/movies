@@ -45,6 +45,9 @@ class MovieController(private val service: MovieService) {
     @GetMapping("/{movieID}")
     fun findById(@PathVariable movieID: Long) = service.findMovieId(movieID)
 
-    @GetMapping("/genre/all")
-    fun findAllGenres() = service.findAllGenres()
+    @GetMapping("/genre")
+    fun findGenres() = service.findGenres()
+
+    @GetMapping("/actor")
+    fun findActors() = service.findActors()
 }
