@@ -66,7 +66,6 @@ class MovieRepoCustomImpl : MovieRepoCustom {
         val subRoot = subQuery.from(Movie::class.java)
         val subJoin = subRoot.join<Movie, T>(joinedWith)
 
-        val predicate: Predicate = subJoin.get<String>(onAttribute).`in`(list)
         val subPredicateList: List<Predicate> = list.map {
             cb.like(cb.lower(subJoin.get(onAttribute)), "%${it.lowercase()}%")
         }
