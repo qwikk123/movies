@@ -29,7 +29,7 @@ export default function SidePanel({ handleFilterChange, genre, updateGenre, acto
       >
         <List style={{marginTop: "55px"}}>
           <ListItem key={"TODO"}>
-              <ListItemText primary={"Search for movies"} sx={{textAlign: "center"}} />
+              <ListItemText primary={"Search for movies"} sx={{textAlign: "center", borderRadius: "0px"}} />
           </ListItem>
         </List>
         <List>

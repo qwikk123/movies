@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { StyledEngineProvider } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -19,7 +18,6 @@ export default function ActorSelect({ handleFilterChange, actors, updateActors }
   }
 
   return (
-    <StyledEngineProvider injectFirst>
       <Autocomplete
         value={actors}
         multiple
@@ -43,6 +41,5 @@ export default function ActorSelect({ handleFilterChange, actors, updateActors }
         )}
         onChange={(event, value) => handleChange(value)}
       />
-    </StyledEngineProvider>
   );
 }

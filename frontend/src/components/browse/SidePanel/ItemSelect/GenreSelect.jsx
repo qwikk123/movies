@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { StyledEngineProvider } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -31,7 +30,6 @@ export default function GenreSelect({ handleFilterChange, genre, updateGenre }) 
   }
 
   return (
-    <StyledEngineProvider injectFirst>
       <Autocomplete
         value={genre}
         multiple
@@ -55,6 +53,5 @@ export default function GenreSelect({ handleFilterChange, genre, updateGenre }) 
         )}
         onChange={(event, value) => handleChange(value)}
       />
-    </StyledEngineProvider>
   );
 }
