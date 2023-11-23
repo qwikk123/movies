@@ -11,9 +11,12 @@ const Browse = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const [movies, setMovies] = useState([])
     const [page, setPage] = useState(0)
+    const pageSize = "size=18"
+
     const [genre, setGenre] = useState([])
     const [actors, setActors] = useState([])
-    const pageSize = "size=18"
+    const [title, setTitle] = useState("")
+
     const [loading, setLoading] = useState(true)
 
     const fetchData = async (p) => {
@@ -39,20 +42,33 @@ const Browse = () => {
       if (searchParams.size === 0) {
         setGenre([])
         setActors([])
+        setTitle("")
       }
     }, [searchParams])
 
     function handleFilterChange (key , value) {
       setSearchParams(prevParams => {
+        if (value === "") {
+          prevParams.delete(key)
+        }
+        else {
+          prevParams.set(key, value)
+        }
+        return prevParams
+      })
+    }
+
+    function handleFilterChangeLists (key , value) {
+      setSearchParams(prevParams => {
         if (value.length === 0) {
           prevParams.delete(key)
         }
         else {
-            prevParams.set(key, value.join(","))
-          }
-          return prevParams
-        })
-      }
+          prevParams.set(key, value.join(","))
+        }
+        return prevParams
+      })
+    }
 
     if (loading) {
         return <CircularProgress />
@@ -60,9 +76,10 @@ const Browse = () => {
     return (
       <div className="center-container" style={{marginTop: "100px", marginLeft: "300px"}}>
         <div className="sidepanel-container">
-        <SidePanel handleFilterChange={ (key, value) => handleFilterChange(key, value)}
+        <SidePanel handleFilterChangeLists={handleFilterChangeLists} handleFilterChange={handleFilterChange}
         genre={genre} updateGenre={value => setGenre(value)}
         actors={actors} updateActors={value => setActors(value)}
+        title={title} setTitle={setTitle}
         />
         </div>
         <div className="grid-container">

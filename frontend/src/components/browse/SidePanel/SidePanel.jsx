@@ -7,10 +7,17 @@ import ListItemText from '@mui/material/ListItemText';
 import GenreSelect from './ItemSelect/GenreSelect';
 import ActorSelect from './ItemSelect/ActorSelect';
 import TextField from '@mui/material/TextField';
+import TitleSearch from './Search/TitleSearch';
 
 const drawerWidth = 300;
 
-export default function SidePanel({ handleFilterChange, genre, updateGenre, actors, updateActors}) {
+export default function SidePanel({ 
+  handleFilterChange,
+  handleFilterChangeLists,
+  genre, updateGenre, 
+  actors, updateActors,
+  title, setTitle
+}) {
   return (
       <Drawer
         PaperProps={{sx :{
@@ -34,14 +41,15 @@ export default function SidePanel({ handleFilterChange, genre, updateGenre, acto
         </List>
         <List>
           <ListItem key="title">
-            <TextField sx={{width: 500}} label="Title"></TextField>
+            <TitleSearch handleFilterChange={handleFilterChange}
+            title={title} setTitle={setTitle}/>
           </ListItem>
           <ListItem key="genre">
-            <GenreSelect handleFilterChange={(key,value) => handleFilterChange(key, value)} 
+            <GenreSelect handleFilterChange={handleFilterChangeLists}
             genre={genre} updateGenre={value => updateGenre(value)}/>
           </ListItem>
           <ListItem key="actor">
-            <ActorSelect handleFilterChange={(key,value) => handleFilterChange(key, value)} 
+            <ActorSelect handleFilterChange={handleFilterChangeLists}
             actors={actors} updateActors={value => updateActors(value)}/>
           </ListItem>
         </List>
