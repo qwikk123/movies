@@ -1,16 +1,16 @@
 .welcome-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 150px;
-    width: 1000px;
-    margin: auto;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 150px;
+  width: 1000px;
+  margin: auto;
+  margin-top: 20px;
 }
 
 .welcome {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-top: 50px;
 }
