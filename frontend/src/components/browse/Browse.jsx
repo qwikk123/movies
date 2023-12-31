@@ -5,6 +5,7 @@ import "./Browse.css";
 import { useSearchParams } from "react-router-dom";
 import { Button, CircularProgress } from "@mui/material";
 import SidePanel from "./SidePanel/SidePanel";
+import GLOBAL_OPTIONS from "../../config";
 
 const Browse = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,7 +21,8 @@ const Browse = () => {
 
   const fetchData = async (p) => {
     const response = await fetch(
-      `http://localhost:8080/api/movies?page=${p}&${pageSize}&${searchParams.toString()}`
+      `http://localhost:8080/api/movies?page=${p}&${pageSize}&${searchParams.toString()}`,
+      GLOBAL_OPTIONS
     );
     const data = await response.json();
     if (p === 0) {

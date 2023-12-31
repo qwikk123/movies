@@ -6,6 +6,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import "./ItemSelect.css";
+import GLOBAL_OPTIONS from "../../../../config";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -18,7 +19,7 @@ export default function GenreSelect({
   const [genres, setGenres] = React.useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/movies/genre`)
+    fetch(`http://localhost:8080/api/movies/genre`, GLOBAL_OPTIONS)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

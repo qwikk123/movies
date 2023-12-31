@@ -1,14 +1,17 @@
 import "./MoviePage.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import GLOBAL_OPTIONS from "../../config";
 
 const MoviePage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState();
   const [loading, setLoading] = useState(true);
 
+  const endpoint = "http://localhost:8080/api/movies/";
+
   useEffect(() => {
-    fetch("http://localhost:8080/api/movies/" + id)
+    fetch(endpoint + id, GLOBAL_OPTIONS)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

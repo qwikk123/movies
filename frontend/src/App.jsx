@@ -5,7 +5,6 @@ import Header from "./components/header/Header";
 import MoviePage from "./components/moviepage/MoviePage";
 import Browse from "./components/browse/Browse";
 import { createTheme, ThemeProvider } from "@mui/material";
-import SidePanel from "./components/browse/SidePanel/SidePanel";
 
 function App() {
   const theme = createTheme({

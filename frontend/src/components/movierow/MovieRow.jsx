@@ -3,13 +3,17 @@ import { useEffect, useState } from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import "./MovieRow.css";
 import { CircularProgress } from "@mui/material";
+import "../../App.jsx";
+import GLOBAL_OPTIONS from "../../config.jsx";
 
 const MovieRow = ({ url, title }) => {
+  const endpoint = `http://localhost:8080/api/${url}`;
+
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/${url}`)
+    fetch(endpoint, GLOBAL_OPTIONS)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
