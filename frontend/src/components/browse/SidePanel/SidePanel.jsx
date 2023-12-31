@@ -59,14 +59,14 @@ export default function SidePanel({
           <GenreSelect
             handleFilterChange={handleFilterChangeLists}
             genre={genre}
-            updateGenre={(value) => updateGenre(value)}
+            updateGenre={updateGenre}
           />
         </ListItem>
         <ListItem key="actor">
           <ActorSelect
             handleFilterChange={handleFilterChangeLists}
             actors={actors}
-            updateActors={(value) => updateActors(value)}
+            updateActors={updateActors}
           />
         </ListItem>
       </List>

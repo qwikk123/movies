@@ -81,9 +81,9 @@ const Browse = () => {
           handleFilterChangeLists={handleFilterChangeLists}
           handleFilterChange={handleFilterChange}
           genre={genre}
-          updateGenre={(value) => setGenre(value)}
+          updateGenre={setGenre}
           actors={actors}
-          updateActors={(value) => setActors(value)}
+          updateActors={setActors}
           title={title}
           setTitle={setTitle}
         />
